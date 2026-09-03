@@ -147,3 +147,51 @@ export const LIVE_MARKET_TICKER = [
   { symbol: 'COAL-HCC', name: 'Prem Coking Coal (FOB Aus)', value: '$224.50/t', change: '+$2.00', changePercent: '+0.90%', trend: 'up' },
   { symbol: 'COAL-ID', name: 'Indo Thermal Coal (4200 GAR)', value: '$52.80/t', change: '+$0.60', changePercent: '+1.15%', trend: 'up' }
 ];
+
+export const MACRO_SCENARIOS_DATA = [
+  {
+    id: 'china-shock',
+    name: 'China Steel Production & Demand Surge',
+    description: 'Surge in Chinese iron ore & met coal imports tightening global Capesize & Panamax availability.',
+    capesizeImpactPercent: +24.0,
+    panamaxImpactPercent: +14.0,
+    supramaxImpactPercent: +8.0,
+    bunkerPriceMultiplier: 1.05,
+    congestionDaysDelta: +1.5,
+    active: false
+  },
+  {
+    id: 'monsoon-lull',
+    name: 'Bay of Bengal Monsoon Disruption',
+    description: 'Heavy seasonal monsoons reducing Indian domestic cement demand and slowing port discharge at Haldia/Paradip.',
+    capesizeImpactPercent: -14.0,
+    panamaxImpactPercent: -10.0,
+    supramaxImpactPercent: -8.0,
+    bunkerPriceMultiplier: 0.96,
+    congestionDaysDelta: +2.5,
+    active: false
+  },
+  {
+    id: 'bunker-spike',
+    name: 'Geopolitical Bunker Fuel Spike (+25% VLSFO)',
+    description: 'Crude supply disruptions raising VLSFO from $580/MT to $725/MT.',
+    capesizeImpactPercent: +18.0,
+    panamaxImpactPercent: +16.0,
+    supramaxImpactPercent: +14.0,
+    bunkerPriceMultiplier: 1.25,
+    congestionDaysDelta: 0.0,
+    active: false
+  },
+  {
+    id: 'canal-bottleneck',
+    name: 'Maritime Chokepoint Rerouting (Cape Surcharge)',
+    description: 'Transit disruptions forcing Cape of Good Hope rerouting and increasing global ton-mile demand.',
+    capesizeImpactPercent: +20.0,
+    panamaxImpactPercent: +18.0,
+    supramaxImpactPercent: +12.0,
+    bunkerPriceMultiplier: 1.10,
+    congestionDaysDelta: +1.0,
+    active: false
+  }
+];
+

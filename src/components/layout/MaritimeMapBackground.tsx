@@ -4,125 +4,140 @@ export const MaritimeMapBackground: React.FC = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {/* Soft Blue Ocean Tint Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#EBF5FB] via-[#F1F8FD] to-[#F8FAFC]"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#EBF5FB]/90 via-[#F1F8FD]/80 to-[#F8FAFC]"></div>
 
-      {/* SVG Global Maritime Shipping Network Vector Map */}
+      {/* SVG Global Maritime Shipping Network Vector Map (High-density Nautical Chart) */}
       <svg
-        viewBox="0 0 1600 800"
+        viewBox="0 0 1600 850"
         preserveAspectRatio="xMidYMid slice"
-        className="w-full h-full opacity-65"
+        className="w-full h-full opacity-70"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <linearGradient id="heroOceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0.8" />
             <stop offset="100%" stopColor="#F0F9FF" stopOpacity="0.4" />
           </linearGradient>
 
-          <linearGradient id="routeLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0284C7" stopOpacity="0.45" />
-            <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#0284C7" stopOpacity="0.45" />
+          <linearGradient id="heroCyanArc" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#0284C7" stopOpacity="0.65" />
+            <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#0284C7" stopOpacity="0.65" />
+          </linearGradient>
+
+          <linearGradient id="heroRedTrunk" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#EF4444" stopOpacity="0.75" />
+            <stop offset="50%" stopColor="#F97316" stopOpacity="0.65" />
+            <stop offset="100%" stopColor="#EF4444" stopOpacity="0.75" />
           </linearGradient>
         </defs>
 
-        {/* Global Grid Latitude/Longitude Lines */}
-        <g stroke="#BAE6FD" strokeWidth="0.5" strokeDasharray="3 4" opacity="0.4">
-          <line x1="0" y1="200" x2="1600" y2="200" />
-          <line x1="0" y1="400" x2="1600" y2="400" />
-          <line x1="0" y1="600" x2="1600" y2="600" />
-          <line x1="400" y1="0" x2="400" y2="800" />
-          <line x1="800" y1="0" x2="800" y2="800" />
-          <line x1="1200" y1="0" x2="1200" y2="800" />
+        {/* Global Grid Latitude/Longitude Lines & Time Zones */}
+        <g stroke="#BAE6FD" strokeWidth="0.6" strokeDasharray="3 4" opacity="0.65">
+          {/* Meridians */}
+          <line x1="50" y1="0" x2="50" y2="850" />
+          <line x1="175" y1="0" x2="175" y2="850" />
+          <line x1="300" y1="0" x2="300" y2="850" />
+          <line x1="425" y1="0" x2="425" y2="850" />
+          <line x1="612" y1="0" x2="612" y2="850" />
+          <line x1="800" y1="0" x2="800" y2="850" />
+          <line x1="925" y1="0" x2="925" y2="850" />
+          <line x1="1112" y1="0" x2="1112" y2="850" />
+          <line x1="1237" y1="0" x2="1237" y2="850" />
+          <line x1="1362" y1="0" x2="1362" y2="850" />
+          <line x1="1425" y1="0" x2="1425" y2="850" />
+          <line x1="1550" y1="0" x2="1550" y2="850" />
+
+          {/* Parallels */}
+          <line x1="0" y1="130" x2="1600" y2="130" />
+          <line x1="0" y1="280" x2="1600" y2="280" />
+          <line x1="0" y1="420" x2="1600" y2="420" stroke="#7DD3FC" strokeWidth="1" strokeDasharray="none" />
+          <line x1="0" y1="560" x2="1600" y2="560" />
+          <line x1="0" y1="710" x2="1600" y2="710" />
         </g>
 
-        {/* Stylized Continent Silhouettes (Very soft light blue-gray) */}
-        <g fill="#E2E8F0" opacity="0.65">
+        {/* Continents Silhouettes */}
+        <g fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="0.8" opacity="0.85">
           {/* North America */}
-          <path d="M 180 120 Q 240 100 320 140 Q 360 180 340 260 Q 300 300 240 310 Q 220 280 200 220 Q 160 180 180 120 Z" />
+          <path d="M 190 120 Q 250 90 340 130 Q 380 170 360 250 Q 340 280 300 290 Q 240 310 220 270 Q 180 200 190 120 Z" />
+          <path d="M 330 180 Q 420 160 480 200 Q 510 250 490 310 Q 430 330 350 280 Q 320 230 330 180 Z" />
+          <path d="M 430 300 Q 460 340 480 390 Q 450 400 420 360 Q 400 320 430 300 Z" />
+          
           {/* South America */}
-          <path d="M 330 380 Q 420 400 400 500 Q 360 620 320 650 Q 290 580 300 460 Q 310 400 330 380 Z" />
+          <path d="M 490 400 Q 590 420 640 470 Q 660 550 620 640 Q 570 730 540 730 Q 520 640 500 530 Q 470 440 490 400 Z" />
+          
           {/* Europe */}
-          <path d="M 680 140 Q 760 120 820 160 Q 840 220 780 260 Q 720 250 670 200 Q 660 160 680 140 Z" />
+          <path d="M 760 140 Q 840 120 890 160 Q 900 220 840 250 Q 780 260 740 220 Q 730 170 760 140 Z" />
+          
           {/* Africa */}
-          <path d="M 680 280 Q 820 270 850 360 Q 880 480 820 620 Q 760 630 720 540 Q 670 420 660 340 Q 660 290 680 280 Z" />
-          {/* Asia / Eurasia */}
-          <path d="M 840 140 Q 1100 110 1280 180 Q 1340 300 1250 380 Q 1120 400 980 330 Q 900 260 840 140 Z" />
+          <path d="M 760 270 Q 880 260 920 330 Q 960 430 940 550 Q 910 650 860 660 Q 800 660 780 570 Q 730 460 730 360 Q 730 290 760 270 Z" />
+
+          {/* Eurasia */}
+          <path d="M 890 120 Q 1100 80 1320 110 Q 1460 160 1440 250 Q 1340 310 1240 330 Q 1120 310 990 260 Q 910 200 890 120 Z" />
+
+          {/* China & East Asia */}
+          <path d="M 1200 240 Q 1340 230 1370 300 Q 1320 380 1220 390 Q 1160 360 1180 300 Z" />
+
           {/* India Subcontinent */}
-          <path d="M 980 310 Q 1060 330 1030 440 Q 990 470 960 410 Q 950 340 980 310 Z" />
-          {/* Southeast Asia / Indonesia archipelago */}
-          <path d="M 1120 420 Q 1240 440 1260 510 Q 1180 540 1120 480 Z" />
+          <path d="M 1040 270 Q 1120 275 1135 320 Q 1120 400 1090 430 Q 1060 400 1035 330 Q 1020 290 1040 270 Z" fill="#CBD5E1" stroke="#0284C7" strokeWidth="1.2" />
+
+          {/* Southeast Asia */}
+          <path d="M 1190 380 Q 1240 390 1250 440 Q 1200 460 1180 410 Z" />
+          <path d="M 1240 430 Q 1300 430 1300 480 Q 1240 490 1230 450 Z" />
+
           {/* Australia */}
-          <path d="M 1240 520 Q 1380 500 1420 590 Q 1380 680 1280 670 Q 1220 600 1240 520 Z" />
+          <path d="M 1320 520 Q 1460 490 1480 580 Q 1470 670 1360 680 Q 1280 620 1320 520 Z" />
         </g>
 
-        {/* Global Maritime Trade Routes Network (Intricate curved great circle paths) */}
-        <g stroke="#0284C7" strokeWidth="1" opacity="0.32" fill="none">
+        {/* Global Sea Routes Network (Intricate Curved Lines) */}
+        <g fill="none">
           
-          {/* Primary Asia - India - Middle East - Europe corridors */}
-          <path d="M 1320 300 Q 1180 440 1010 420 Q 960 400 860 320 Q 780 260 700 220" />
-          <path d="M 1300 280 Q 1160 430 1000 425 Q 940 395 850 315 Q 770 250 680 200" />
-          <path d="M 1340 320 Q 1200 450 1020 430 Q 970 410 870 330 Q 790 270 710 230" />
-          
-          {/* Australia to India East Coast (Paradip, Vizag, Dhamra, Haldia) */}
-          <path d="M 1380 560 Q 1240 480 1020 420" stroke="#0066CC" strokeWidth="1.8" opacity="0.6" />
-          <path d="M 1360 540 Q 1220 470 1015 415" stroke="#0066CC" strokeWidth="1.5" opacity="0.5" />
-          <path d="M 1400 580 Q 1260 490 1025 425" stroke="#0066CC" strokeWidth="1.5" opacity="0.5" />
-          <path d="M 1260 560 Q 1160 490 1010 420" stroke="#0066CC" strokeWidth="1.6" opacity="0.55" />
-          
-          {/* Indonesia (Kalimantan / Taboneo / Samarinda) to India East Coast */}
-          <path d="M 1180 470 Q 1100 440 1020 420" stroke="#0284C7" strokeWidth="2" opacity="0.65" />
-          <path d="M 1160 460 Q 1090 435 1015 415" stroke="#0284C7" strokeWidth="1.7" opacity="0.6" />
-          <path d="M 1200 480 Q 1110 445 1025 425" stroke="#0284C7" strokeWidth="1.7" opacity="0.6" />
+          {/* Ambient Blue Sea Lanes */}
+          <g stroke="#0284C7" strokeWidth="1.2" opacity="0.35">
+            {/* Transpacific */}
+            <path d="M 1375 250 Q 1550 200 1600 240" />
+            <path d="M 0 240 Q 150 280 310 260" />
+            <path d="M 1320 265 Q 1520 220 1600 260" />
+            <path d="M 0 260 Q 160 300 310 280" />
+            
+            {/* Transatlantic */}
+            <path d="M 495 245 Q 640 220 810 185" />
+            <path d="M 430 280 Q 600 260 760 270" />
+            <path d="M 635 530 Q 720 420 810 185" />
+            <path d="M 635 530 Q 750 560 860 660" />
 
-          {/* Mozambique / South Africa to India East Coast */}
-          <path d="M 830 580 Q 900 490 1015 425" stroke="#0066CC" strokeWidth="1.8" opacity="0.55" />
-          <path d="M 810 610 Q 880 500 1010 420" stroke="#0066CC" strokeWidth="1.5" opacity="0.5" />
+            {/* Asia-Europe-India Mega Corridor */}
+            <path d="M 1320 265 Q 1280 360 1240 425 Q 1150 435 975 365 Q 945 310 885 270 Q 840 225 810 185" />
+            <path d="M 1015 320 Q 1060 350 1115 305" />
+          </g>
 
-          {/* US East Coast & Gulf to India via Cape of Good Hope */}
-          <path d="M 320 240 Q 480 420 780 640 Q 880 540 1015 425" stroke="#0284C7" strokeWidth="1.8" opacity="0.5" />
-          <path d="M 280 290 Q 460 440 760 650 Q 870 550 1010 420" stroke="#0284C7" strokeWidth="1.5" opacity="0.45" />
+          {/* Australia to India East Coast (Paradip, Vizag, Haldia, Dhamra) */}
+          <path d="M 1425 570 Q 1310 470 1230 435 Q 1160 410 1115 305" stroke="#0066CC" strokeWidth="2.2" opacity="0.75" />
+          <path d="M 1430 590 Q 1320 480 1235 440 Q 1165 415 1118 300" stroke="#0066CC" strokeWidth="1.8" opacity="0.65" />
+          <path d="M 1435 635 Q 1330 500 1240 445 Q 1170 420 1125 290" stroke="#0066CC" strokeWidth="1.8" opacity="0.65" />
 
-          {/* Russia (Black Sea / Taman) to India via Suez */}
-          <path d="M 820 220 Q 860 300 870 330 Q 940 400 1015 420" stroke="#0066CC" strokeWidth="1.7" opacity="0.5" />
-          {/* Russia (Far East / Vostochny) to India */}
-          <path d="M 1320 220 Q 1220 350 1140 450 Q 1060 430 1020 420" stroke="#0066CC" strokeWidth="1.6" opacity="0.5" />
+          {/* Indonesia to India East Coast */}
+          <path d="M 1260 450 Q 1200 425 1115 305" stroke="#0284C7" strokeWidth="2" opacity="0.75" />
+          <path d="M 1275 435 Q 1205 420 1125 290" stroke="#0284C7" strokeWidth="1.8" opacity="0.7" />
 
-          {/* Transatlantic & Transpacific Global Routes */}
-          <path d="M 320 220 Q 500 180 680 180" />
-          <path d="M 340 240 Q 520 200 700 200" />
-          <path d="M 300 200 Q 480 160 660 160" />
-          <path d="M 380 460 Q 550 560 760 630" />
-          <path d="M 330 260 Q 160 350 40 400" />
-          <path d="M 1360 280 Q 1500 240 1590 220" />
-          <path d="M 1400 580 Q 1520 620 1590 640" />
+          {/* South Africa to India */}
+          <path d="M 935 615 Q 1020 500 1105 325" stroke="#0066CC" strokeWidth="2" opacity="0.7" />
 
-          {/* Dense Indian Ocean Hub Lines */}
-          <path d="M 1015 420 Q 940 450 860 480 Q 780 540 740 600" />
-          <path d="M 1015 420 Q 1080 390 1140 360 Q 1240 320 1320 280" />
-          <path d="M 1015 420 Q 1060 460 1120 500 Q 1200 560 1300 620" />
-          <path d="M 1015 420 Q 940 360 880 320" />
-          <path d="M 1015 420 Q 980 480 940 550" />
+          {/* Red Strategic Trunk Corridors (Matching reference image) */}
+          <path d="M 1375 250 Q 1550 180 1600 200 M 0 200 Q 180 220 310 260 Q 400 330 490 395" stroke="#EF4444" strokeWidth="2.4" opacity="0.7" />
+          <path d="M 810 185 Q 650 170 495 235" stroke="#EF4444" strokeWidth="2.2" opacity="0.65" />
         </g>
 
-        {/* Choke Point & Port Convergence Radar Dots */}
-        <g fill="#0284C7">
-          {/* India East Coast Ports Focal Glow */}
-          <circle cx="1015" cy="420" r="5" fill="#FF5B26" />
-          <circle cx="1015" cy="420" r="14" fill="none" stroke="#FF5B26" strokeWidth="1" opacity="0.4" />
-          
-          {/* Malacca Strait */}
-          <circle cx="1140" cy="450" r="3.5" opacity="0.7" />
-          {/* Suez */}
-          <circle cx="860" cy="320" r="3.5" opacity="0.7" />
-          {/* Cape */}
-          <circle cx="780" cy="640" r="3.5" opacity="0.7" />
-          {/* Hay Point / Australia */}
-          <circle cx="1380" cy="560" r="4" fill="#0066CC" opacity="0.8" />
-          {/* Singapore */}
-          <circle cx="1150" cy="455" r="4" fill="#0066CC" opacity="0.8" />
-          {/* Norfolk US */}
-          <circle cx="320" cy="240" r="4" fill="#0066CC" opacity="0.8" />
+        {/* Global Major Port Nodes */}
+        <g fill="#0284C7" opacity="0.7">
+          <circle cx="1115" cy="305" r="4.5" fill="#EF4444" /> {/* Paradip */}
+          <circle cx="1105" cy="325" r="3.5" /> {/* Vizag */}
+          <circle cx="1125" cy="290" r="3.5" /> {/* Haldia */}
+          <circle cx="1240" cy="425" r="4" fill="#0EA5E9" /> {/* Singapore */}
+          <circle cx="1425" cy="570" r="4" fill="#0EA5E9" /> {/* Hay Point */}
+          <circle cx="1320" cy="265" r="4" /> {/* Shanghai */}
+          <circle cx="810" cy="185" r="4" /> {/* Rotterdam */}
+          <circle cx="495" cy="245" r="4" /> {/* Norfolk */}
         </g>
       </svg>
     </div>
