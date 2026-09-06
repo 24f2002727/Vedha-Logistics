@@ -151,8 +151,8 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
               key={idx}
               onClick={() => setSelectedIndex(idx)}
               className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${selectedIndex === idx
-                  ? 'bg-orange-500 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-orange-500 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
               {idx === 'BCI' ? 'Capesize (BCI)' : idx === 'BPI' ? 'Panamax (BPI)' : idx === 'BSI' ? 'Supramax (BSI)' : 'Composite (BDI)'}
