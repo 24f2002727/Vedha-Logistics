@@ -17,10 +17,12 @@ import {
 } from 'lucide-react';
 import { EAST_COAST_INDIAN_PORTS, GLOBAL_ORIGIN_PORTS } from '../../data/portsData';
 import { WorldMapHeroBackground } from './WorldMapHeroBackground';
+import { TwoPhaseWizard } from '../wizard/TwoPhaseWizard';
 
 interface LandingHomePageProps {
   onNavigateTab: (tabId: string) => void;
-  onQuickSimulate: (originId: string, destId: string, volume: number) => void;
+  onQuickSimulate?: (originId: string, destId: string, volume: number) => void;
+  currency?: string;
 }
 
 export const LandingHomePage: React.FC<LandingHomePageProps> = ({
@@ -106,87 +108,27 @@ export const LandingHomePage: React.FC<LandingHomePageProps> = ({
             Engineered for India&apos;s East Coast bulk procurement: solving market entry timing, vessel class selection, idle time reduction, and laytime risk mitigation.
           </p>
         </div>
-
-        {/* Hero Interactive Quick Route & Rate Estimator Bar */}
-        <div className="relative z-10 mt-10 max-w-4xl mx-auto bg-white text-slate-900 rounded-2xl p-6 border border-slate-200 shadow-2xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100">
-            <div className="flex items-center gap-2">
-              <Ship className="w-4 h-4 text-orange-500" />
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-900">
-                Instant Corridor &amp; Vessel Solver
-              </span>
-            </div>
-            <span className="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
-              East Coast India Physical Constraints Active
-            </span>
-          </div>
-
-          <form onSubmit={handleQuickSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Origin Port */}
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-orange-500" /> Origin Load Port
-              </label>
-              <select
-                value={selectedOrigin}
-                onChange={(e) => setSelectedOrigin(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-orange-500 focus:bg-white transition-colors cursor-pointer"
-              >
-                {GLOBAL_ORIGIN_PORTS.map((p) => (
-                  <option key={p.id} value={p.id}>{p.name} ({p.country})</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Destination Port */}
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1">
-                <Anchor className="w-3.5 h-3.5 text-sky-600" /> East Coast Discharge Port
-              </label>
-              <select
-                value={selectedDest}
-                onChange={(e) => setSelectedDest(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-sky-600 focus:bg-white transition-colors cursor-pointer"
-              >
-                {EAST_COAST_INDIAN_PORTS.map((p) => (
-                  <option key={p.id} value={p.id}>{p.name} (Draft: {p.maxDraft}m)</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Parcel Size */}
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1">
-                <Layers className="w-3.5 h-3.5 text-amber-600" /> Parcel Volume (MT)
-              </label>
-              <select
-                value={cargoVolume}
-                onChange={(e) => setCargoVolume(Number(e.target.value))}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:border-amber-600 focus:bg-white transition-colors cursor-pointer"
-              >
-                <option value={35000}>35,000 MT (Handysize)</option>
-                <option value={55000}>55,000 MT (Supramax)</option>
-                <option value={63500}>63,500 MT (Ultramax)</option>
-                <option value={75000}>75,000 MT (Panamax)</option>
-                <option value={82000}>82,000 MT (Kamsarmax)</option>
-                <option value={150000}>150,000 MT (Capesize)</option>
-                <option value={180000}>180,000 MT (Capesize Deep)</option>
-              </select>
-            </div>
-
-            {/* Submit Action */}
-            <div className="flex items-end">
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-orange-500 hover:bg-orange-600 shadow-md shadow-orange-500/25 transition-all cursor-pointer group"
-              >
-                <span>Optimize Route</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          </form>
-        </div>
       </div>
+
+      {/* 2. Primary 2-Phase Intelligent Chartering Wizard */}
+      <section className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-display font-extrabold text-slate-900 flex items-center gap-2">
+              <Ship className="w-5 h-5 text-orange-500" />
+              <span>Automated 2-Phase Chartering Wizard</span>
+            </h2>
+            <p className="text-xs text-slate-500 font-medium">
+              Phase 1 Asset &amp; Freight Optimization ➔ Phase 2 Temporal Timing &amp; Port Congestion Synchronization.
+            </p>
+          </div>
+        </div>
+
+        <TwoPhaseWizard
+          currency="USD"
+          onNavigateTab={onNavigateTab}
+        />
+      </section>
 
       {/* 2. Four Core Problem Pillars Grid */}
       <div className="space-y-6">

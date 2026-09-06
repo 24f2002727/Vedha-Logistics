@@ -20,11 +20,75 @@ Procuring bulk raw materials for India's East Coast industrial corridor (Odisha,
 4. **Vessel Idle Time & Deadheading**: Lack of triangulation and backhaul matching leading to costly ballast voyages.
 
 **Vedha Logistics** solves these challenges through:
+- **Progressive 2-Phase Chartering Wizard**: 1-Click Automated AI solver on Home with seamless manual overrides in dedicated tabs.
 - **Optimal Market Entry Timing**: 180-day probabilistic Baltic rate trajectories with actionable buy/hold directives.
 - **Vessel Type & Port Draft Optimization**: Multi-constraint Under-Keel Clearance (UKC) solver with cross-sectional water column visualization.
 - **MILP Portfolio Allocation**: Mathematical distribution across Spot, Multi-Voyage COA (3-6M), and Period Time Charter (6-12M) with VaR95 risk reduction.
 - **Idle Scenario Management & Virtual Arrival**: Non-linear cubic propeller law simulator ($F = F_{\text{design}} \cdot (V/V_{\text{design}})^3$) cutting bunker fuel burn, avoiding demurrage, and abating Scope 1 $\text{CO}_2\text{e}$.
 - **Risk Mitigation**: Live East Coast queue radar and macroeconomic volatility shock simulations.
+
+---
+
+## ⚡ Flagship Feature: Progressive 2-Phase Chartering Wizard
+
+The platform features an automated, progressive **2-Phase Decision Pipeline** accessible directly from the Home page:
+
+```mermaid
+flowchart TD
+    In([User Inputs: Origin, Destination, Commodity, Volume/Capesize]) --> EngineSelect{Execution Mode}
+
+    %% Automatic Path (Home)
+    EngineSelect -->|1-Click Auto Wizard| ML_Pipeline[Progressive 2-Phase Pipeline]
+    
+    subgraph Core_ML_Pipeline["Core 2-Phase ML Optimization Engine"]
+        %% Phase 1
+        subgraph Phase1["PHASE 1: Asset & Freight Optimization Engine"]
+            P1_UKC[Multi-Constraint UKC & Draft Hydrodynamic Solver]
+            P1_ML[Gradient-Boosted Freight & Bunker Cost Predictor]
+            P1_UKC & P1_ML --> P1_Out["Recommends Optimal Vessel Class (Handysize → Capesize)<br/>+ Landed Freight Rate ($/MT & ₹/MT)<br/>+ STS Lighterage Tariff if Draft Restricted<br/>+ Click-to-Override 6-Vessel Comparison Table"]
+        end
+
+        %% Phase 2
+        subgraph Phase2["PHASE 2: Temporal Timing & Congestion Engine"]
+            P2_TS[Probabilistic Time-Series Baltic Rate Forecaster]
+            P2_Queue[Stochastic M/M/c Port Queue & Congestion Estimator]
+            P2_Tide[Harmonic Tidal High-Water Synchronizer]
+            P2_TS & P2_Queue & P2_Tide --> P2_Out["Expected Voyage Days<br/>↳ Destination Port Congestion (Queue Days)<br/>↳ Baltic Index Trend (Forward Rate Trough)<br/>↳ Optimal 5-Day Laycan Booking Window<br/>↳ Virtual Arrival Eco-Steaming Slider"]
+        end
+
+        P1_Out --> Phase2
+    end
+
+    %% Manual Path (Tabs)
+    EngineSelect -->|Manual Tabs| ManualTabs["Dedicated Manual Tabs<br/>• Override Vessel Class & UKC Visualizer<br/>• Adjust Steaming Speed & Laycan<br/>• Custom Bunker & Contract Split"]
+    
+    P2_Out --> DecisionCard([Final Action Directive: Best Vessel + Optimal Timing + Total Cost])
+    ManualTabs --> DecisionCard
+```
+
+### Screen Flow:
+1. **Screen 1 (Route & Cargo Input)**: Select Origin, Discharge Port, Commodity, and Parcel Volume $\rightarrow$ Click **"Run Intelligent Voyage Analysis"**.
+2. **Screen 2 (Phase 1: Asset & Freight Optimization)**:
+   - **Hero AI Card**: Winning vessel class, landed freight $/MT (and ₹/MT), total spend, UKC draft safety margins, and STS lightering requirements.
+   - **Interactive 6-Vessel Comparison**: Handysize, Supramax, Ultramax, Panamax, Kamsarmax, Capesize with 1-click override selection.
+3. **Screen 3 (Phase 2: Temporal & Congestion Optimization)**:
+   - **Expected Voyage Days** (Sea transit + port handling).
+   - **Destination Port Congestion (Queue Days)** placed directly below expected days.
+   - **Baltic Index Signal** (forward rate trough projection).
+   - **Tidal High-Water Window & Recommended Laycan Window**.
+   - **Virtual Arrival Speed Slider (10.5–14.5 kts)** with live bunker fuel and demurrage savings.
+   - **Export Charter Directive** modal with 1-click clipboard sharing.
+
+---
+
+## 📡 Live Telemetry & Data Updating Mechanisms
+
+| Data Stream | Primary Sources | Ingestion Frequency | Mathematical & ML Update Engine |
+| :--- | :--- | :---: | :--- |
+| **Baltic Indices (BDI, BCI, BPI, BSI)** | The Baltic Exchange (London) API, Clarksons SIN, Freight Derivatives Wire | Daily at 13:00 UTC | **SARIMAX / ARDL Time-Series Forecaster**: Ingests new daily fixtures, updates lag regressors, and generates 180-day forward curves with Monte Carlo 95% confidence bands ($p_{10}, p_{50}, p_{90}$). |
+| **Port Congestion & Queue Days** | AIS Satellite Feeds (Kpler / MarineTraffic / Spire), Indian Major Ports Authority (IPA / Sagarmala) | Real-time & Daily 24h reports | **Stochastic $M/M/c$ Queueing Model**: $\text{Queue Days} = \frac{\text{Anchorage Vessels} \times \text{Avg DWT}}{\text{Berth Handling TPD}}$. Feeds Phase 2 and Virtual Arrival. |
+| **Bunker Fuel Prices** | Singapore VLSFO Bunker Wire | Daily | Updates fuel burn models ($F = F_0 \cdot (V/V_0)^3$) and landed freight $/MT. |
+| **Tidal & Estuarine Limits** | Hooghly River / Kolkata Port Trust Tide Tables | Semi-Diurnal / Monthly | Harmonic Spring Tide matching for maximum draft high-water windows. |
 
 ---
 
@@ -52,41 +116,32 @@ Procuring bulk raw materials for India's East Coast industrial corridor (Odisha,
 
 ## ⚡ Key Platform Modules
 
-### 1. 🏠 Authentic Logistics Landing Homepage (`LandingHomePage.tsx`)
-- High-tech **World Maritime Sea Routes Vector Map Background** with continental landmasses, latitude/longitude nautical grid, and glowing shipping corridors.
-- **Instant Route Feasibility & Rate Estimator**: Quick 3-field selector (Origin, Discharge Port, Volume) linking directly into deep solver tools.
+### 1. 🏠 Landing Homepage with 2-Phase Wizard (`LandingHomePage.tsx` & `TwoPhaseWizard.tsx`)
+- High-tech **World Maritime Sea Routes Vector Map Background**.
+- **Automated 2-Phase Chartering Wizard**: Sequential asset optimization $\rightarrow$ temporal congestion synchronization.
 - Real-time operational metric counters (14.8M MT volume modeled, 13.5% average landed savings, 85,000+ MT $\text{CO}_2$ abated).
-- Interactive India East Coast port infrastructure grid and 4-step decision framework.
 
 ### 2. 📈 Optimal Market Entry Timing & AI Freight Forecasting (`FreightForecastDashboard.tsx`)
-- **Plain-English AI Action Cards**: Direct recommendations (*"LOCK 6-MONTH COA NOW"*, *"WAIT / SPOT BUFFER"*), expected rate change percentages, confidence ratings, and target booking windows.
+- **Plain-English AI Action Cards**: Direct recommendations (*"LOCK 6-MONTH COA NOW"*, *"WAIT / SPOT BUFFER"*).
 - **Probabilistic Time-Series Curve**: 12-month historical actuals + 180-day forward forecasts with 95% confidence bands across **BCI (Capesize)**, **BPI (Panamax)**, **BSI (Supramax)**, and **BDI (Composite)**.
-- **Dynamic Sensitivity Sliders**: Real-time modeling for Singapore VLSFO bunker prices ($450–$750/MT) and global industrial demand multipliers.
 
 ### 3. ⚓ Vessel Selection & Port Infrastructure Solver (`VesselOptimizerTool.tsx`)
 - **Three-Tier Feasibility Engine**: Strict evaluation generating `PASSED`, `RESTRICTED - LIGHTERING REQ`, or `REJECTED`.
 - **Interactive Under-Keel Clearance (UKC) Water-Column Visualizer**: Cross-sectional hull diagram showing submerged vessel draft against permissible berth chart datum and safe UKC margins.
 - **Automated STS Lightering Engine**: Computes mandatory lightering volumes and STS tariffs ($4.20/MT at Sandheads for Haldia).
-- Landed freight cost comparison ($/MT and ₹/MT), voyage days, bunker fuel, and demurrage exposure across Handysize, Supramax, Ultramax, Panamax, Kamsarmax, and Capesize.
 
 ### 4. 📄 Contract & Laycan Strategy Optimizer (`COAContractPlanner.tsx`)
 - **MILP Mathematical Portfolio Solver**: Allocates cargo volume across Spot, Multi-Voyage COA (3-6M), and Period Time Charter (6-12M) based on an interactive risk-tolerance slider.
-- **Landed Cost Waterfall**: Side-by-side comparison (100% Spot vs Recommended Hybrid vs 100% Time Charter) showing landed rate/MT, total spend ($/₹), and 95% Value-at-Risk (VaR95) tail-risk reduction.
-- **Programmed Voyage Laycan Schedule Table**: Sequence of programmed vessel liftings with specific laycan windows and operational lightering notes.
-- **BIMCO Structured Clauses**: Standard Bunker Adjustment Factor (BAF) formulas and demurrage collars.
+- **Landed Cost Waterfall**: Side-by-side comparison showing landed rate/MT, total spend ($/₹), and 95% Value-at-Risk (VaR95) tail-risk reduction.
 
 ### 5. 🌿 Virtual Arrival & Green Steaming Simulator (`VirtualArrivalSimulator.tsx`)
 - **Non-Linear Cubic Steaming Physics**: Simulates fuel burn reduction:
   $$\text{Sea Fuel Burn (MT/day)} = \text{Design Sea Fuel} \times \left(\frac{V_{\text{opt}}}{V_{\text{design}}}\right)^3$$
-- **High-Impact ROI Metrics**: Net Financial Savings ($ and ₹), VLSFO Bunker Fuel Saved (MT), Demurrage Avoidance ($ and ₹), Scope 1 $\text{CO}_2\text{e}$ Abatement (MT), and IMO CII grade upgrades (e.g. Grade D $\rightarrow$ Grade A).
-- **Backhaul Triangulation**: Actionable recommendations (e.g. Paradip $\rightarrow$ Qingdao Iron Ore) to eliminate empty return voyages.
+- **High-Impact ROI Metrics**: Net Financial Savings ($ and ₹), VLSFO Bunker Fuel Saved (MT), Demurrage Avoidance ($ and ₹), Scope 1 $\text{CO}_2\text{e}$ Abatement (MT), and IMO CII grade upgrades.
 
 ### 6. 🚨 Port Congestion Radar & Risk Monitor (`PortCongestionMonitor.tsx`)
 - Live queue days and turnaround benchmarks across all 7 Indian East Coast ports.
 - **Interactive Macro Shock Simulator**: One-click stress testing for *China Steel Surge*, *Bay of Bengal Monsoon Disruption*, *Geopolitical Bunker Spike (+25%)*, and *Chokepoint Rerouting*.
-
-### 7. 💵 Dual-Currency Financial Engine
-- Global header toggle between **USD ($)** and **Indian Rupee (₹ Lakh / ₹ Cr)** across all cards, tables, waterfalls, and rates.
 
 ---
 
@@ -97,15 +152,10 @@ Procuring bulk raw materials for India's East Coast industrial corridor (Odisha,
 - **Icons**: Lucide React
 - **Build Tool**: Vite 6 (Fast HMR & Production Bundler)
 - **Math & Solvers**: Custom TypeScript engines for MILP portfolio allocation, cubic hydrodynamics, and Under-Keel Clearance physics.
-- **Design Inspiration**: Veson Nautical & modern bulk logistics interfaces (Clean, high-contrast, transparent navbar, dark nautical world map background, signal orange accents).
 
 ---
 
 ## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v18.0.0 or higher)
-- npm (v9.0.0 or higher)
 
 ### Installation & Run
 
@@ -121,8 +171,6 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` (or the port shown in terminal) in your browser.
-
 ### Automated Testing & Production Build
 
 ```bash
@@ -136,8 +184,6 @@ npm run build
 ---
 
 ## 🧪 Automated Verification Suite
-
-The platform includes an automated verification engine in `src/test-suite.ts`:
 
 ```bash
 🚢 [VEDHA LOGISTICS TEST SUITE] Starting Automated Verification Engine...
