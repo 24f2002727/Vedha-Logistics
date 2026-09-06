@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Ship, 
-  Anchor, 
-  MapPin, 
-  Layers, 
-  AlertTriangle, 
-  Fuel, 
-  ChevronRight, 
-  ShieldCheck, 
-  Zap, 
+import {
+  Ship,
+  Anchor,
+  MapPin,
+  Layers,
+  AlertTriangle,
+  Fuel,
+  ChevronRight,
+  ShieldCheck,
+  Zap,
   Info,
   CheckCircle2,
   XCircle,
@@ -81,13 +81,13 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
           </div>
           <div>
             <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-              Vessel Selection & Port Infrastructure Solver
+              Vessel & Port Solver
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200 font-mono font-bold">
                 Draft & LOA Engine
               </span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              Automated multi-constraint solver matching cargo parcel sizes with East Coast India draft, LOA, beam, and lighterage rules.
+              Multi-constraint solver matching parcel sizes with port rules.
             </p>
           </div>
         </div>
@@ -99,11 +99,10 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
             <button
               key={m}
               onClick={() => setHorizonMonths(m)}
-              className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                horizonMonths === m
-                  ? 'bg-white text-orange-600 shadow-xs border border-slate-200 font-extrabold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
+              className={`px-3 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer ${horizonMonths === m
+                ? 'bg-white text-orange-600 shadow-xs border border-slate-200 font-extrabold'
+                : 'text-slate-600 hover:text-slate-900'
+                }`}
             >
               {m === 1 ? 'Spot' : `${m}M COA`}
             </button>
@@ -113,7 +112,7 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
 
       {/* Input Parameters & Port Infrastructure Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
+
         {/* Form Inputs (5 cols) */}
         <div className="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800 pb-2 border-b border-slate-100 flex items-center gap-2">
@@ -220,7 +219,7 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
             <div className="flex items-center justify-between mb-2 border-b border-slate-800 pb-2">
               <span className="text-[10px] font-mono font-bold text-orange-400 uppercase tracking-wider flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-orange-400" />
-                Algorithmically Recommended Vessel Class
+                Recommended Vessel Class
               </span>
               <span className="text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
                 Score: {recommendedVessel?.feasibilityScore}/100
@@ -237,7 +236,7 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed mb-4">
-              Best balance between cargo parcel economy, draft clearance at {destPort?.name}, and daily hire economics.
+              Optimal balance of parcel economy, draft clearance, and hire economics.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono mb-4">
@@ -250,9 +249,8 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
 
               <div className="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700">
                 <span className="text-[10px] text-slate-400 block">Draft Margin</span>
-                <span className={`text-base font-extrabold ${
-                  (recommendedVessel?.draftMargin || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'
-                }`}>
+                <span className={`text-base font-extrabold ${(recommendedVessel?.draftMargin || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'
+                  }`}>
                   {(recommendedVessel?.draftMargin || 0) >= 0 ? `+${recommendedVessel?.draftMargin}m (Safe)` : `${recommendedVessel?.draftMargin}m (Deficit)`}
                 </span>
               </div>
@@ -297,10 +295,10 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
           <div>
             <h3 className="text-base font-display font-bold text-slate-900 flex items-center gap-2">
               <Anchor className="w-4 h-4 text-cyan-600" />
-              Interactive Under-Keel Clearance (UKC) & Water-Column Visualizer
+              UKC & Water-Column Visualizer
             </h3>
             <p className="text-xs text-slate-500">
-              Cross-sectional hull diagram showing submerged vessel draft against {destPort?.name} permissible chart datum depth.
+              Depth and draft analysis.
             </p>
           </div>
 
@@ -310,11 +308,10 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
               <button
                 key={v.type}
                 onClick={() => setSelectedVesselTab(v.type)}
-                className={`px-2.5 py-1 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${
-                  selectedVesselTab === v.type
-                    ? 'bg-white text-slate-900 shadow-xs border border-slate-200'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
+                className={`px-2.5 py-1 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${selectedVesselTab === v.type
+                  ? 'bg-white text-slate-900 shadow-xs border border-slate-200'
+                  : 'text-slate-600 hover:text-slate-900'
+                  }`}
               >
                 {v.type}
               </button>
@@ -324,7 +321,7 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
 
         {/* Visual Water Column Box */}
         <div className="relative h-64 w-full bg-gradient-to-b from-sky-950/20 via-blue-950/40 to-slate-900 border border-slate-300 rounded-xl overflow-hidden p-4 flex flex-col justify-between">
-          
+
           {/* Water Surface Line (0.0m) */}
           <div className="relative z-10 flex items-center justify-between border-b-2 border-cyan-500 pb-1">
             <span className="text-xs font-mono font-bold text-cyan-700 bg-white/80 px-2 py-0.5 rounded shadow-xs">
@@ -336,7 +333,7 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
           </div>
 
           {/* Submerged Hull Visual Bar */}
-          <div 
+          <div
             className="absolute left-1/4 right-1/4 top-10 rounded-b-xl border-x-2 border-b-2 border-cyan-400 bg-gradient-to-b from-slate-800/90 via-slate-700/90 to-cyan-900/90 flex flex-col justify-end p-2 transition-all duration-500 shadow-lg text-center"
             style={{ height: `${Math.min(180, activeVesselFeas.waterColumn.vesselDraftPercent * 2.2)}px` }}
           >
@@ -346,18 +343,17 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
           </div>
 
           {/* Port Max Permissible Seabed / Berth Draft Line */}
-          <div 
+          <div
             className="absolute left-4 right-4 border-b-2 border-dashed transition-all duration-500 flex items-center justify-between px-2"
-            style={{ 
+            style={{
               top: `${Math.min(210, 40 + activeVesselFeas.waterColumn.portDraftPercent * 2.2)}px`,
               borderColor: activeVesselFeas.waterColumn.isDraftExceeded ? '#EF4444' : '#10B981'
             }}
           >
-            <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded shadow-xs ${
-              activeVesselFeas.waterColumn.isDraftExceeded
-                ? 'bg-rose-100 text-rose-800 border border-rose-300'
-                : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-            }`}>
+            <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded shadow-xs ${activeVesselFeas.waterColumn.isDraftExceeded
+              ? 'bg-rose-100 text-rose-800 border border-rose-300'
+              : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+              }`}>
               Port Safe Berth Draft Limit: {destPort?.maxDraft}m
             </span>
 
@@ -378,9 +374,8 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
               Gear: <span className="font-bold text-orange-400">{activeVesselSpec.isGeared ? 'Geared (4x30t)' : 'Gearless'}</span>
             </div>
             <div>
-              Status: <span className={`font-bold ${
-                activeVesselFeas.status === 'PASSED' ? 'text-emerald-400' : activeVesselFeas.status === 'RESTRICTED' ? 'text-amber-400' : 'text-rose-400'
-              }`}>
+              Status: <span className={`font-bold ${activeVesselFeas.status === 'PASSED' ? 'text-emerald-400' : activeVesselFeas.status === 'RESTRICTED' ? 'text-amber-400' : 'text-rose-400'
+                }`}>
                 {activeVesselFeas.status === 'PASSED' && `UKC: +${activeVesselFeas.draftMargin}m (Safe)`}
                 {activeVesselFeas.status === 'RESTRICTED' && `Lightering Req (${activeVesselFeas.lighterageVolumeMT?.toLocaleString()} MT)`}
                 {activeVesselFeas.status === 'REJECTED' && `Draft Deficit: -${Math.abs(activeVesselFeas.draftMargin)}m (Exceeded)`}
@@ -415,9 +410,8 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
               {results.map((res) => {
                 const spec = VESSEL_CLASSES.find(v => v.type === res.vesselType)!;
                 return (
-                  <tr key={res.vesselType} className={`hover:bg-slate-50 transition-colors ${
-                    res.isRecommended ? 'bg-orange-50/40 font-bold' : ''
-                  }`}>
+                  <tr key={res.vesselType} className={`hover:bg-slate-50 transition-colors ${res.isRecommended ? 'bg-orange-50/40 font-bold' : ''
+                    }`}>
                     <td className="py-3 px-3 font-sans font-bold text-slate-900">
                       <div className="flex items-center gap-1.5">
                         <span>{res.vesselType}</span>
@@ -430,13 +424,12 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
                     </td>
 
                     <td className="py-3 px-3">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-sans font-bold inline-flex items-center gap-1 ${
-                        res.status === 'PASSED'
-                          ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                          : res.status === 'RESTRICTED'
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-sans font-bold inline-flex items-center gap-1 ${res.status === 'PASSED'
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                        : res.status === 'RESTRICTED'
                           ? 'bg-amber-50 text-amber-700 border border-amber-200'
                           : 'bg-rose-50 text-rose-700 border border-rose-200'
-                      }`}>
+                        }`}>
                         {res.status === 'PASSED' && <CheckCircle2 className="w-3 h-3" />}
                         {res.status === 'RESTRICTED' && <AlertTriangle className="w-3 h-3" />}
                         {res.status === 'REJECTED' && <XCircle className="w-3 h-3" />}

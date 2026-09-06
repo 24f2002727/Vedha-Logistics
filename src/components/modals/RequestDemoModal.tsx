@@ -40,10 +40,10 @@ export const RequestDemoModal: React.FC<RequestDemoModalProps> = ({ isOpen, onCl
             </div>
 
             <h3 className="text-2xl font-display font-extrabold text-slate-900">
-              Schedule an AI Maritime Demo
+              Request Enterprise Access
             </h3>
             <p className="text-xs text-slate-600 mt-1 mb-6 leading-relaxed">
-              Discover how Vedha Logistics transitions bulk buyers from spot volatility to high-margin multi-voyage COA contracts.
+              Discover how to transition from spot volatility to structured COA contracts.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
@@ -102,7 +102,7 @@ export const RequestDemoModal: React.FC<RequestDemoModalProps> = ({ isOpen, onCl
                 type="submit"
                 className="w-full py-3 mt-2 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-md shadow-orange-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Request Executive Walkthrough</span>
+                <span>Submit Request</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
@@ -114,10 +114,10 @@ export const RequestDemoModal: React.FC<RequestDemoModalProps> = ({ isOpen, onCl
             </div>
 
             <h3 className="text-xl font-display font-bold text-slate-900">
-              Demo Request Received!
+              Request Received!
             </h3>
             <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
-              Thank you, <strong className="text-slate-900">{formData.name || 'Chartering Partner'}</strong>. A dedicated Vedha Maritime Chartering Strategist will contact you at <strong className="text-orange-600">{formData.email}</strong> within 4 hours.
+              Thank you, <strong className="text-slate-900">{formData.name || 'Partner'}</strong>. Our team will contact you at <strong className="text-orange-600">{formData.email}</strong> within 4 hours.
             </p>
 
             <button

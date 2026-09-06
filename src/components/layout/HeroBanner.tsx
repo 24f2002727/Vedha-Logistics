@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  ArrowRight, 
-  TrendingDown, 
-  CheckCircle2, 
-  Anchor, 
-  MapPin, 
-  Layers, 
+import {
+  ArrowRight,
+  TrendingDown,
+  CheckCircle2,
+  Anchor,
+  MapPin,
+  Layers,
   Sparkles,
   Gauge
 } from 'lucide-react';
@@ -38,19 +38,19 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onQuickSimulate, onExplo
 
   return (
     <div className="relative overflow-hidden border-b border-slate-200 pt-12 pb-16 min-h-[580px] flex flex-col justify-center">
-      
+
       {/* Intricate Global Maritime Connectivity Routes Map Background (Veson Nautical Aesthetic) */}
       <MaritimeMapBackground />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Main Headline - Exactly matching Veson Nautical style & smaller refined title font */}
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-display font-extrabold tracking-tight text-slate-900 leading-[1.2]">
             The AI-powered platform <br />
             <span className="italic font-extrabold text-[#0284C7]">for maritime workflows</span>
           </h1>
-          
+
           <p className="mt-3.5 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
             Predictive freight rate forecasting and vessel charter optimization for India's East Coast bulk procurement.
           </p>
@@ -71,12 +71,12 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onQuickSimulate, onExplo
                   type="submit"
                   className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#FF5B26] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] shadow-md shadow-orange-500/25 transition-all cursor-pointer whitespace-nowrap"
                 >
-                  Book a demo
+                  Request Access
                 </button>
               </form>
             ) : (
               <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2.5 rounded-full text-xs font-bold shadow-sm">
-                ✓ Demo request logged for {quickEmail}. Our team will contact you promptly.
+                ✓ Access request logged for {quickEmail}. Our team will contact you promptly.
               </div>
             )}
           </div>

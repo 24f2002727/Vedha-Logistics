@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { 
-  AlertTriangle, 
-  ShieldAlert, 
+import {
+  AlertTriangle,
+  ShieldAlert,
   DollarSign,
   CloudRain,
   Activity,
@@ -78,13 +78,13 @@ export const PortCongestionMonitor: React.FC<PortCongestionMonitorProps> = ({
           </div>
           <div>
             <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-              Port Congestion Radar &amp; Risk Mitigation Center
+              Port Congestion & Risk Center
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200 font-mono font-bold">
-                Live Disruption Feed
+                Live Disruption
               </span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              Real-time monitoring of East Coast India queue wait days, monsoon laytime risk, and macro volatility shock simulations.
+              Real-time monitoring of port queues, laytime risks, and macro volatility.
             </p>
           </div>
         </div>
@@ -95,17 +95,17 @@ export const PortCongestionMonitor: React.FC<PortCongestionMonitorProps> = ({
         </div>
       </div>
 
-      {/* Macroeconomic Shock & Disruption Stress Testing (Strength extracted from SIH-PS06) */}
+      {/* Macroeconomic Shock & Disruption Stress Testing */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-850 to-orange-950/30 p-6 rounded-2xl border border-slate-800 text-white shadow-lg space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2">
             <Zap className="w-5 h-5 text-orange-400" />
             <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-wider">
-              Macro Volatility &amp; Shock Stress Testing
+              Macro Shock Stress Testing
             </span>
           </div>
           <span className="text-xs font-mono text-slate-400">
-            Toggle scenario to assess market impact on freight and port delays
+            Toggle scenario to assess market impact.
           </span>
         </div>
 
@@ -116,11 +116,10 @@ export const PortCongestionMonitor: React.FC<PortCongestionMonitorProps> = ({
               <button
                 key={s.id}
                 onClick={() => setActiveShockId(isSelected ? null : s.id)}
-                className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer flex flex-col justify-between ${
-                  isSelected
-                    ? 'bg-orange-500/20 border-orange-500 shadow-md'
-                    : 'bg-slate-800/80 border-slate-700 hover:border-slate-600'
-                }`}
+                className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer flex flex-col justify-between ${isSelected
+                  ? 'bg-orange-500/20 border-orange-500 shadow-md'
+                  : 'bg-slate-800/80 border-slate-700 hover:border-slate-600'
+                  }`}
               >
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
@@ -166,7 +165,7 @@ export const PortCongestionMonitor: React.FC<PortCongestionMonitorProps> = ({
       <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <div className="flex items-center justify-between pb-2 border-b border-slate-100">
           <h3 className="text-base font-display font-bold text-slate-900">
-            East Coast India Live Congestion &amp; Queue Benchmarks
+            Live Congestion &amp; Queue Benchmarks
           </h3>
           <span className="text-xs font-mono text-slate-500">
             Paradip • Vizag • Gangavaram • Gopalpur • Dhamra • Sagar • Haldia
@@ -184,29 +183,27 @@ export const PortCongestionMonitor: React.FC<PortCongestionMonitorProps> = ({
             return (
               <div
                 key={port.id}
-                className={`p-5 rounded-xl border transition-all flex flex-col justify-between ${
-                  isSevere
-                    ? 'bg-rose-50/50 border-rose-300'
-                    : isHigh
+                className={`p-5 rounded-xl border transition-all flex flex-col justify-between ${isSevere
+                  ? 'bg-rose-50/50 border-rose-300'
+                  : isHigh
                     ? 'bg-amber-50/50 border-amber-300'
                     : isMod
-                    ? 'bg-sky-50/40 border-sky-300'
-                    : 'bg-white border-slate-200 shadow-xs'
-                }`}
+                      ? 'bg-sky-50/40 border-sky-300'
+                      : 'bg-white border-slate-200 shadow-xs'
+                  }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold text-slate-900 font-sans">{port.name}</span>
                     <span
-                      className={`text-[10px] font-bold font-mono px-2 py-0.5 rounded-full uppercase ${
-                        isSevere
-                          ? 'bg-rose-100 text-rose-800'
-                          : isHigh
+                      className={`text-[10px] font-bold font-mono px-2 py-0.5 rounded-full uppercase ${isSevere
+                        ? 'bg-rose-100 text-rose-800'
+                        : isHigh
                           ? 'bg-amber-100 text-amber-800'
                           : isMod
-                          ? 'bg-sky-100 text-sky-800'
-                          : 'bg-emerald-100 text-emerald-800'
-                      }`}
+                            ? 'bg-sky-100 text-sky-800'
+                            : 'bg-emerald-100 text-emerald-800'
+                        }`}
                     >
                       {port.congestionStatus} Queue
                     </span>
@@ -244,22 +241,21 @@ export const PortCongestionMonitor: React.FC<PortCongestionMonitorProps> = ({
       <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 className="text-base font-display font-bold text-slate-900 flex items-center gap-2 pb-2 border-b border-slate-100">
           <ShieldAlert className="w-5 h-5 text-rose-600" />
-          <span>Active Operational Alerts &amp; Strategic Mitigation Playbooks</span>
+          <span>Active Alerts &amp; Mitigation Playbooks</span>
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {alerts.map((alt) => (
             <div
               key={alt.id}
-              className={`p-5 rounded-xl border flex flex-col justify-between ${
-                alt.level === 'Severe'
-                  ? 'bg-rose-50/40 border-rose-300'
-                  : alt.level === 'High'
+              className={`p-5 rounded-xl border flex flex-col justify-between ${alt.level === 'Severe'
+                ? 'bg-rose-50/40 border-rose-300'
+                : alt.level === 'High'
                   ? 'bg-amber-50/40 border-amber-300'
                   : alt.level === 'Moderate'
-                  ? 'bg-sky-50/30 border-sky-300'
-                  : 'bg-emerald-50/30 border-emerald-300'
-              }`}
+                    ? 'bg-sky-50/30 border-sky-300'
+                    : 'bg-emerald-50/30 border-emerald-300'
+                }`}
             >
               <div>
                 <div className="flex items-center justify-between mb-2">

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Ship, 
-  TrendingUp, 
-  Layers, 
-  Compass, 
-  AlertTriangle, 
-  FileText, 
-  Menu, 
-  X, 
-  ChevronRight, 
+import {
+  Ship,
+  TrendingUp,
+  Layers,
+  Compass,
+  AlertTriangle,
+  FileText,
+  Menu,
+  X,
+  ChevronRight,
   Anchor,
   Leaf,
   DollarSign,
@@ -37,45 +37,40 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'intelligence', label: 'Market Timing & Forecast', icon: TrendingUp },
-    { id: 'optimizer', label: 'Vessel & Port Optimizer', icon: Ship },
+    { id: 'intelligence', label: 'Market Timing', icon: TrendingUp },
+    { id: 'optimizer', label: 'Vessel Optimizer', icon: Ship },
     { id: 'coa-planner', label: 'Contract Strategy', icon: Layers },
-    { id: 'virtual-arrival', label: 'Virtual Arrival & Green Steaming', icon: Leaf },
-    { id: 'congestion', label: 'Port Congestion Radar', icon: AlertTriangle },
-    { id: 'maritime-map', label: 'Sea Routes & Map', icon: Compass },
+    { id: 'virtual-arrival', label: 'Virtual Arrival', icon: Leaf },
+    { id: 'congestion', label: 'Congestion Radar', icon: AlertTriangle },
+    { id: 'maritime-map', label: 'Sea Routes Map', icon: Compass },
     { id: 'port-db', label: 'Port DB', icon: Anchor },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 transition-colors shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          
+    <header className="sticky top-0 z-50 bg-slate-100/90 backdrop-blur-md border-b border-slate-200/80 transition-colors shadow-xs">
+      <div className="w-full px-4 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-20 gap-4 xl:gap-8">
+
           {/* Brand Logo */}
-          <div 
+          <div
             className="flex items-center gap-2.5 cursor-pointer select-none"
             onClick={() => setActiveTab('home')}
           >
             <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-slate-950 shadow-md text-white font-black border border-slate-800">
               <Ship className="w-5 h-5 text-orange-500" />
             </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-display font-extrabold text-lg tracking-tight text-slate-900">
-                  VEDHA
-                </span>
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-orange-50 text-orange-600 border border-orange-200 uppercase tracking-wider">
-                  LOGISTICS AI
-                </span>
-              </div>
-              <p className="text-[10px] text-slate-500 font-medium tracking-wide">
-                Maritime Freight &amp; Charter Intelligence
-              </p>
+            <div className="flex flex-col justify-center whitespace-nowrap">
+              <span className="font-display font-black text-2xl sm:text-3xl tracking-tighter text-slate-900 leading-none">
+                VEDHA
+              </span>
+              <span className="font-display font-bold text-sm sm:text-sm tracking-widest text-slate-900 leading-none mt-1">
+                LOGISTICS AI
+              </span>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-2 xl:gap-3">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -83,17 +78,13 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all relative cursor-pointer ${
-                    isActive
-                      ? 'text-orange-600 bg-orange-50/90 font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
-                  }`}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all duration-300 relative cursor-pointer hover:-translate-y-0.5 ${isActive
+                      ? 'text-slate-900 bg-slate-200/80 font-bold shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+                    }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-orange-600' : 'text-slate-400'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'}`} />
                   <span>{item.label}</span>
-                  {isActive && (
-                    <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-orange-500 rounded-full"></span>
-                  )}
                 </button>
               );
             })}
@@ -105,17 +96,15 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 onClick={() => setCurrency('USD')}
-                className={`px-2 py-1 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${
-                  currency === 'USD' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'
-                }`}
+                className={`px-2 py-1 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${currency === 'USD' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'
+                  }`}
               >
                 USD ($)
               </button>
               <button
                 onClick={() => setCurrency('INR')}
-                className={`px-2 py-1 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${
-                  currency === 'INR' ? 'bg-white text-orange-600 shadow-xs font-extrabold' : 'text-slate-500 hover:text-slate-900'
-                }`}
+                className={`px-2 py-1 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${currency === 'INR' ? 'bg-white text-orange-600 shadow-xs font-extrabold' : 'text-slate-500 hover:text-slate-900'
+                  }`}
               >
                 INR (₹)
               </button>
@@ -123,18 +112,18 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={onExportReport}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 rounded-lg shadow-xs transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:text-orange-600 bg-white hover:bg-orange-50 border border-slate-300 hover:border-orange-200 rounded-lg shadow-xs transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
-              <FileText className="w-3.5 h-3.5 text-slate-500" />
+              <FileText className="w-3.5 h-3.5 text-slate-400 group-hover:text-orange-500" />
               <span>Export Report</span>
             </button>
 
             <button
               onClick={onRequestDemo}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
             >
               <span>Terminal View</span>
-              <ChevronRight className="w-3 h-3 text-orange-400" />
+              <ChevronRight className="w-3 h-3 text-orange-400 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
 
@@ -174,13 +163,12 @@ export const Header: React.FC<HeaderProps> = ({
                   setActiveTab(item.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`flex items-center gap-2.5 w-full px-3 py-2.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
-                  isActive
-                    ? 'text-orange-600 bg-orange-50 font-bold'
-                    : 'text-slate-700 hover:bg-slate-50'
-                }`}
+                className={`flex items-center gap-2.5 w-full px-3 py-2.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${isActive
+                    ? 'text-slate-900 bg-slate-200/80 font-bold'
+                    : 'text-slate-700 hover:bg-slate-100'
+                  }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-orange-600' : 'text-slate-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-slate-900' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </button>
             );
@@ -195,7 +183,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center justify-center gap-1.5 w-full py-2 text-xs font-bold text-slate-700 bg-slate-100 rounded-lg"
             >
               <FileText className="w-4 h-4" />
-              <span>Export Optimization Report</span>
+              <span>Export Report</span>
             </button>
           </div>
         </div>

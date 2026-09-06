@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  Sparkles, 
-  Calendar, 
-  ArrowRight, 
+import {
+  Sparkles,
+  Calendar,
+  ArrowRight,
   Target
 } from 'lucide-react';
 import { MARKET_TIMING_SIGNALS } from '../../data/freightRatesData';
@@ -17,10 +17,10 @@ export const MarketTimingAdvisor: React.FC<MarketTimingAdvisorProps> = ({ onActi
       <div>
         <h3 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2">
           <Target className="w-5 h-5 text-orange-600" />
-          Optimal Market Entry Timing Radar
+          Market Entry Radar
         </h3>
         <p className="text-xs text-slate-500 font-medium">
-          Algorithmic buy/hold recommendations identifying the highest value fixture windows to minimize charter expenses.
+          Recommendations identifying optimal fixture windows.
         </p>
       </div>
 
@@ -33,24 +33,22 @@ export const MarketTimingAdvisor: React.FC<MarketTimingAdvisorProps> = ({ onActi
           return (
             <div
               key={signal.id}
-              className={`bg-white p-6 rounded-2xl border transition-all flex flex-col justify-between shadow-sm ${
-                isEmerald
+              className={`bg-white p-6 rounded-2xl border transition-all flex flex-col justify-between shadow-sm ${isEmerald
                   ? 'border-emerald-300 hover:shadow-md'
                   : isBlue
-                  ? 'border-sky-300 hover:shadow-md'
-                  : isAmber
-                  ? 'border-amber-300 hover:shadow-md'
-                  : 'border-orange-300 hover:shadow-md'
-              }`}
+                    ? 'border-sky-300 hover:shadow-md'
+                    : isAmber
+                      ? 'border-amber-300 hover:shadow-md'
+                      : 'border-orange-300 hover:shadow-md'
+                }`}
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-[10px] font-bold font-mono px-3 py-1 rounded-full uppercase tracking-wider ${
-                    isEmerald ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
-                    isBlue ? 'bg-sky-50 text-sky-700 border border-sky-200' :
-                    isAmber ? 'bg-amber-50 text-amber-700 border border-amber-200' :
-                    'bg-orange-50 text-orange-700 border border-orange-200'
-                  }`}>
+                  <span className={`text-[10px] font-bold font-mono px-3 py-1 rounded-full uppercase tracking-wider ${isEmerald ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
+                      isBlue ? 'bg-sky-50 text-sky-700 border border-sky-200' :
+                        isAmber ? 'bg-amber-50 text-amber-700 border border-amber-200' :
+                          'bg-orange-50 text-orange-700 border border-orange-200'
+                    }`}>
                     {signal.signalType.replace(/_/g, ' ')}
                   </span>
 

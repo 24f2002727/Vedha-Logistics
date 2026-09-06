@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { 
-  Leaf, 
-  Wind, 
-  Fuel, 
-  Clock, 
-  DollarSign, 
-  Award, 
-  CheckCircle2, 
-  Anchor, 
-  Zap, 
-  Compass, 
+import {
+  Leaf,
+  Wind,
+  Fuel,
+  Clock,
+  DollarSign,
+  Award,
+  CheckCircle2,
+  Anchor,
+  Zap,
+  Compass,
   ArrowRight,
   TrendingDown
 } from 'lucide-react';
@@ -49,13 +49,13 @@ export const VirtualArrivalSimulator: React.FC<VirtualArrivalSimulatorProps> = (
         <div className="space-y-2 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
             <Leaf className="w-3.5 h-3.5" />
-            <span>JUST-IN-TIME STEAMING & IMO CII SIMULATOR</span>
+            <span>JIT STEAMING & CII SIMULATOR</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-display font-extrabold text-white tracking-tight">
-            Virtual Arrival & Green Steaming Hydrodynamic Optimizer
+            Virtual Arrival & Green Steaming Simulator
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Eliminate the wasteful &quot;rush-and-wait&quot; cycle. When East Coast port waiting queues are known in advance, slow down at sea. Non-linear cubic propeller laws drastically slash bunker fuel burn, avoid demurrage, and abate carbon emissions.
+            Reduce fuel burn and emissions by optimizing speed for known port delays.
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export const VirtualArrivalSimulator: React.FC<VirtualArrivalSimulatorProps> = (
       <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
         <h3 className="text-base font-display font-bold text-slate-900 flex items-center gap-2">
           <Zap className="w-4 h-4 text-orange-500" />
-          <span>Voyage Speed & Destination Port Delay Parameters</span>
+          <span>Voyage & Delay Parameters</span>
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -308,7 +308,7 @@ export const VirtualArrivalSimulator: React.FC<VirtualArrivalSimulatorProps> = (
         <h3 className="text-base font-display font-bold text-slate-900 flex items-center justify-between pb-2 border-b border-slate-100">
           <span className="flex items-center gap-2">
             <Compass className="w-5 h-5 text-orange-500" />
-            Backhaul Triangulation & Ballast Deadheading Reduction Opportunities
+            Backhaul & Ballast Reduction Opportunities
           </span>
           <span className="text-xs font-mono text-slate-500 font-medium">
             Avoid empty return voyages

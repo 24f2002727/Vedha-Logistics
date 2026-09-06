@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  TrendingUp, 
-  Sliders, 
-  ArrowUpRight, 
-  ArrowDownRight, 
-  Sparkles, 
-  Layers, 
+import {
+  TrendingUp,
+  Sliders,
+  ArrowUpRight,
+  ArrowDownRight,
+  Sparkles,
+  Layers,
   Fuel,
   CheckCircle2,
   Calendar,
@@ -67,7 +67,7 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
 
   // Create paths
   const historyPath = historyPoints.map((d, i) => `${i === 0 ? 'M' : 'L'} ${getX(d.index)} ${getY(d.adjustedForecast)}`).join(' ');
-  
+
   // Bridge history to forecast
   const lastHistory = historyPoints[historyPoints.length - 1];
   const forecastPath = [
@@ -89,7 +89,7 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
   const currentIndexVal = chartData[historyPoints.length - 1]?.adjustedForecast || 2000;
   const forwardTargetIdx = forecastHorizon === '30' ? historyPoints.length :
     forecastHorizon === '60' ? historyPoints.length + 1 :
-    forecastHorizon === '90' ? historyPoints.length + 2 : historyPoints.length + 5;
+      forecastHorizon === '90' ? historyPoints.length + 2 : historyPoints.length + 5;
   const forwardTargetVal = chartData[forwardTargetIdx]?.adjustedForecast || 2280;
   const rateChangePct = +(((forwardTargetVal - currentIndexVal) / currentIndexVal) * 100).toFixed(1);
 
@@ -133,13 +133,13 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
           </div>
           <div>
             <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-              Predictive Freight Forecaster & Market Entry Advisor
+              Freight Forecaster & Market Advisor
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono font-bold">
                 AI Forecast
               </span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              12-month historical actuals + 180-day forward trajectory with 95% confidence bounds.
+              Historical actuals and 180-day forward trajectory.
             </p>
           </div>
         </div>
@@ -150,11 +150,10 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
             <button
               key={idx}
               onClick={() => setSelectedIndex(idx)}
-              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${
-                selectedIndex === idx
+              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${selectedIndex === idx
                   ? 'bg-orange-500 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
-              }`}
+                }`}
             >
               {idx === 'BCI' ? 'Capesize (BCI)' : idx === 'BPI' ? 'Panamax (BPI)' : idx === 'BSI' ? 'Supramax (BSI)' : 'Composite (BDI)'}
             </button>
@@ -162,13 +161,13 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
         </div>
       </div>
 
-      {/* Clear AI Recommendation Banner (Inspired by SIH-26- simplicity) */}
+      {/* Clear AI Recommendation Banner */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-850 to-orange-950/30 p-6 rounded-2xl border border-slate-800 text-white shadow-lg space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-orange-400" />
             <span className="text-xs font-mono font-bold text-orange-400 uppercase tracking-wider">
-              AI Market Entry Recommendation
+              AI Recommendation
             </span>
           </div>
 
@@ -179,9 +178,8 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
                 <button
                   key={h}
                   onClick={() => setForecastHorizon(h)}
-                  className={`px-2 py-0.5 text-[11px] font-mono font-bold rounded cursor-pointer ${
-                    forecastHorizon === h ? 'bg-orange-500 text-white' : 'text-slate-400 hover:text-white'
-                  }`}
+                  className={`px-2 py-0.5 text-[11px] font-mono font-bold rounded cursor-pointer ${forecastHorizon === h ? 'bg-orange-500 text-white' : 'text-slate-400 hover:text-white'
+                    }`}
                 >
                   +{h}d
                 </button>
@@ -238,9 +236,8 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
         {/* Expected Change */}
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
           <span className="text-[10px] text-slate-500 uppercase font-mono block font-bold">Expected Delta</span>
-          <div className={`text-xl font-bold font-mono mt-1 flex items-center gap-1 ${
-            rateChangePct >= 0 ? 'text-orange-600' : 'text-emerald-600'
-          }`}>
+          <div className={`text-xl font-bold font-mono mt-1 flex items-center gap-1 ${rateChangePct >= 0 ? 'text-orange-600' : 'text-emerald-600'
+            }`}>
             {rateChangePct >= 0 ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
             <span>{rateChangePct >= 0 ? `+${rateChangePct}%` : `${rateChangePct}%`}</span>
           </div>
@@ -271,10 +268,10 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100">
           <div>
             <h3 className="text-base font-display font-bold text-slate-900">
-              {selectedIndex} Time Series Trajectory & 95% Confidence Area
+              {selectedIndex} Trajectory & Confidence Area
             </h3>
             <p className="text-xs text-slate-500">
-              Solid black = Historical Actuals • Dashed orange = Probabilistic Forward Forecast
+              Historical actuals vs. forward AI forecast.
             </p>
           </div>
 
@@ -382,9 +379,8 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
                       x={xPos}
                       y={svgHeight - 12}
                       textAnchor="middle"
-                      className={`text-[9px] font-mono ${
-                        d.isHistorical ? 'fill-slate-500' : 'fill-orange-600 font-bold'
-                      }`}
+                      className={`text-[9px] font-mono ${d.isHistorical ? 'fill-slate-500' : 'fill-orange-600 font-bold'
+                        }`}
                     >
                       {d.month.split(' ')[0]}
                     </text>
@@ -423,7 +419,7 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
           <div className="flex justify-between text-xs font-bold">
             <span className="text-slate-700 flex items-center gap-1.5">
               <Fuel className="w-4 h-4 text-orange-500" />
-              Singapore VLSFO Bunker Sensitivity
+              Bunker Sensitivity
             </span>
             <span className="font-mono text-orange-600 font-extrabold">${bunkerPrice} / MT</span>
           </div>
@@ -448,7 +444,7 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
           <div className="flex justify-between text-xs font-bold">
             <span className="text-slate-700 flex items-center gap-1.5">
               <Sliders className="w-4 h-4 text-cyan-600" />
-              Global Dry Bulk Industrial Demand Multiplier
+              Demand Multiplier
             </span>
             <span className="font-mono text-cyan-700 font-extrabold">{(demandFactor * 100).toFixed(0)}%</span>
           </div>

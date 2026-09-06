@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  Compass, 
+import {
+  Compass,
   Layers,
   Ship,
   Anchor,
@@ -27,7 +27,7 @@ export const InteractiveMaritimeMap: React.FC<InteractiveMaritimeMapProps> = ({
 
   return (
     <div className="space-y-8">
-      
+
       {/* Flagship World Sea Routes Map Viewport (Nautical Chart Theme) */}
       <WorldSeaRoutesMap
         initialSelectedRouteId={selectedRoute.id}
@@ -40,7 +40,7 @@ export const InteractiveMaritimeMap: React.FC<InteractiveMaritimeMapProps> = ({
 
       {/* Corridor Analysis & Port Infrastructure Insights Matrix */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
+
         {/* Active Trade Corridor Analytics (7 cols) */}
         <div className="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
@@ -89,7 +89,7 @@ export const InteractiveMaritimeMap: React.FC<InteractiveMaritimeMapProps> = ({
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
             <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
               <AlertTriangle className="w-4 h-4 text-amber-500" />
-              <span>Critical Maritime Chokepoints & Cyclone Risk</span>
+              <span>Chokepoints & Cyclone Risk</span>
             </div>
             <div className="flex flex-wrap gap-2 text-xs">
               {selectedRoute.chokepoints.map((cp, idx) => (

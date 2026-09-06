@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Layers, 
-  TrendingDown, 
-  FileCheck, 
-  Check, 
+import {
+  Layers,
+  TrendingDown,
+  FileCheck,
+  Check,
   Download,
   Calendar,
   ShieldCheck,
@@ -71,13 +71,13 @@ export const COAContractPlanner: React.FC<COAContractPlannerProps> = ({
           </div>
           <div>
             <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-              Contract &amp; Laycan Strategy Optimizer
+              Contract &amp; Strategy Optimizer
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono font-bold">
-                MILP Portfolio Solver
+                Portfolio Solver
               </span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              Mixed-integer programming solver balancing Multi-Voyage COA, Period Time Charters, and Spot fixtures with risk-adjusted landed cost waterfalls.
+              Solver balancing COA, Time Charters, and Spot fixtures with risk-adjusted landed costs.
             </p>
           </div>
         </div>
@@ -174,7 +174,7 @@ export const COAContractPlanner: React.FC<COAContractPlannerProps> = ({
         {/* Risk Tolerance Slider */}
         <div className="sm:col-span-2 space-y-1">
           <div className="flex justify-between text-xs font-bold mb-1">
-            <span className="text-slate-700">Risk Preference (Spot vs Fixed Certainty):</span>
+            <span className="text-slate-700">Risk Preference:</span>
             <span className="font-mono text-cyan-700 font-extrabold">
               {riskTolerance <= 30 ? 'Cost Minimizer (Spot Agility)' : riskTolerance <= 70 ? 'Balanced Hybrid (Optimal)' : 'Conservative Budget Shield'}
             </span>
@@ -202,7 +202,7 @@ export const COAContractPlanner: React.FC<COAContractPlannerProps> = ({
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
             <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
-              MILP Mathematical Portfolio Solution
+              MILP Portfolio Solution
             </span>
           </div>
           <span className="text-xs font-mono text-slate-300">
@@ -371,13 +371,12 @@ export const COAContractPlanner: React.FC<COAContractPlannerProps> = ({
                     Lifting #{a.voyageNumber}
                   </td>
                   <td className="py-2.5 px-3">
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                      a.contractType === 'COA'
-                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                        : a.contractType === 'TimeCharter'
+                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${a.contractType === 'COA'
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      : a.contractType === 'TimeCharter'
                         ? 'bg-cyan-50 text-cyan-700 border border-cyan-200'
                         : 'bg-amber-50 text-amber-700 border border-amber-200'
-                    }`}>
+                      }`}>
                       {a.contractType === 'COA' ? '6M COA' : a.contractType === 'TimeCharter' ? 'Period TC' : 'Spot Fixture'}
                     </span>
                   </td>
