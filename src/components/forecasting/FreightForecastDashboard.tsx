@@ -133,13 +133,13 @@ export const FreightForecastDashboard: React.FC<FreightForecastDashboardProps> =
           </div>
           <div>
             <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-              Freight Forecaster & Market Advisor
+              Optimal Market Entry Timing
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono font-bold">
-                AI Forecast
+                180-Day AI Forecast
               </span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              Historical actuals and 180-day forward trajectory.
+              Identifying ideal windows to secure vessel charter fixtures and minimize landed freight costs.
             </p>
           </div>
         </div>

@@ -81,13 +81,13 @@ export const VesselOptimizerTool: React.FC<VesselOptimizerToolProps> = ({
           </div>
           <div>
             <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-              Vessel & Port Solver
+              Vessel Type Optimization &amp; Port Limitations
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200 font-mono font-bold">
-                Draft & LOA Engine
+                Handysize → Capesize
               </span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              Multi-constraint solver matching parcel sizes with port rules.
+              Multi-constraint solver factoring in Indian East Coast draft, LOA, and cargo handling limitations.
             </p>
           </div>
         </div>

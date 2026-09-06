@@ -49,13 +49,13 @@ export const VirtualArrivalSimulator: React.FC<VirtualArrivalSimulatorProps> = (
         <div className="space-y-2 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
             <Leaf className="w-3.5 h-3.5" />
-            <span>JIT STEAMING & CII SIMULATOR</span>
+            <span>IDLE SCENARIO &amp; POSITIONING ENGINE</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-display font-extrabold text-white tracking-tight">
-            Virtual Arrival & Green Steaming Simulator
+            Idle Scenario Management &amp; Virtual Arrival
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Reduce fuel burn and emissions by optimizing speed for known port delays.
+            Eliminating anchorage idle time through JIT speed optimization and reducing deadheading via strategic backhaul positioning.
           </p>
         </div>
 

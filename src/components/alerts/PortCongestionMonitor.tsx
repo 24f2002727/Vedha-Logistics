@@ -78,13 +78,13 @@ export const PortCongestionMonitor: React.FC<PortCongestionMonitorProps> = ({
           </div>
           <div>
             <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-              Port Congestion & Risk Center
+              Risk Mitigation &amp; Early Warning Radar
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200 font-mono font-bold">
-                Live Disruption
+                Live Disruption Feed
               </span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              Real-time monitoring of port queues, laytime risks, and macro volatility.
+              Early warning intelligence for market volatility, port congestion queues, and laytime exposure.
             </p>
           </div>
         </div>
